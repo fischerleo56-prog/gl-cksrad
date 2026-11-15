@@ -7,8 +7,8 @@
   GR.HISTORY_MAX = 10;
 
   GR.COLORS = [
-    "#ff3d71", "#ff8a3d", "#ffc83d", "#3ddc97", "#3dc1ff",
-    "#6c63ff", "#c44dff", "#ff4de1", "#2ee6d6", "#8be04e"
+    "#e8503a", "#f28c28", "#f5c518", "#2fa84f", "#1f9bd1",
+    "#5b5fcf", "#a64fc0", "#e04a8f", "#18a89a", "#7ab317"
   ];
 
   GR.DEFAULT_ENTRIES = ["Pizza", "Burger", "Sushi", "Pasta", "Döner", "Salat"];

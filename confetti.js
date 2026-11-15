@@ -1,7 +1,7 @@
 /* ===== Konfetti-Effekt auf einem eigenen Canvas ===== */
 (function () {
   var GR = (window.GR = window.GR || {});
-  var COLORS = ["#ff3d71", "#ffc83d", "#3ddc97", "#3dc1ff", "#c44dff", "#ff4de1", "#ffffff"];
+  var COLORS = ["#e8503a", "#f28c28", "#f5c518", "#2fa84f", "#1f9bd1", "#a64fc0", "#ffffff"];
   var raf = null;
 
   GR.confetti = {
