@@ -7,7 +7,22 @@
 }
 .brand { display: flex; align-items: center; gap: 10px; color: var(--text); text-decoration: none; font-weight: 800; font-size: 1.15rem; }
 .brand img { display: block; }
+.header-right { display: flex; align-items: center; gap: 8px; }
 .nav { display: flex; gap: 2px; }
+.lang-select {
+  background: var(--surface); color: var(--text); border: 1px solid var(--line);
+  border-radius: 8px; padding: 8px 10px; font-size: 0.9rem; font-weight: 600; cursor: pointer;
+}
+.lang-select:hover { border-color: #454c5b; }
+.lang-select option { background: var(--surface); color: var(--text); }
+
+/* Startseite mit Sprachauswahl */
+.lang-landing { max-width: 640px; margin: 0 auto; padding: 14vh 20px 40px; text-align: center; }
+.lang-landing h1 { margin-bottom: 8px; }
+.lang-landing .lead { margin-bottom: 28px; }
+.lang-list { list-style: none; padding: 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 10px; }
+.lang-list a { display: block; padding: 14px 12px; border-radius: 12px; border: 1px solid var(--line); background: var(--surface); color: var(--text); text-decoration: none; font-weight: 700; transition: border-color 0.15s, background 0.15s; }
+.lang-list a:hover { border-color: var(--accent); background: var(--surface-2); }
 .nav a { color: var(--muted); text-decoration: none; font-weight: 600; font-size: 0.95rem; padding: 8px 12px; border-radius: 8px; transition: color 0.15s, background 0.15s; }
 .nav a:hover { color: var(--text); background: var(--surface); }
 
@@ -54,8 +69,10 @@ details p { padding-bottom: 14px; }
   .stage { grid-template-columns: 1fr; gap: 24px; }
   .panel { max-width: 640px; width: 100%; margin: 0 auto; }
 }
+@media (max-width: 640px) {
+  .nav { display: none; }
+}
 @media (max-width: 520px) {
-  .nav a { padding: 8px 8px; font-size: 0.88rem; }
   main { padding-top: 20px; }
   .app-head { margin-bottom: 16px; }
   .content { margin-top: 32px; }

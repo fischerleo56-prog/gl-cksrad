@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://example.com/sitemap.xml
+Sitemap: https://fischerleo56-prog.github.io/gl-cksrad/sitemap.xml

@@ -97,7 +97,7 @@
       ctx.fillStyle = "#9097a6";
       ctx.textAlign = "center"; ctx.textBaseline = "middle";
       ctx.font = FONT.replace("{s}", Math.round(s * 0.045));
-      ctx.fillText("Füge Einträge hinzu", c, c + s * 0.14);
+      ctx.fillText(GR.T.empty, c, c + s * 0.14);
       return;
     }
 

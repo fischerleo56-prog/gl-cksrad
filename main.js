@@ -33,11 +33,12 @@
   var wheel = new GR.Wheel($("wheelCanvas"));
 
   /* ---------- Synchronisieren ---------- */
-  function sync() {
+  /* skipSave: beim Start die Standard-Einträge nicht speichern, damit sie sich beim Sprachwechsel mit übersetzen */
+  function sync(skipSave) {
     wheel.setEntries(state.entries);
     ui.renderEntries(state.entries, removeEntry);
     ui.setSpinEnabled(state.entries.length >= GR.MIN_ENTRIES);
-    GR.storage.set("entries", state.entries);
+    if (!skipSave) GR.storage.set("entries", state.entries);
   }
 
   function syncHistory() {
@@ -80,7 +81,7 @@
 
   $("clearBtn").addEventListener("click", function () {
     if (wheel.spinning || !state.entries.length) return;
-    if (window.confirm("Alle Einträge wirklich löschen?")) {
+    if (window.confirm(GR.T.confirmClear)) {
       state.entries = [];
       sync();
     }
@@ -120,11 +121,11 @@
     ui.closeModal();
     document.body.classList.add("is-spinning");
     ui.setSpinEnabled(false);
-    $("spinBtn").querySelector(".spin-label").textContent = "Dreht …";
+    $("spinBtn").querySelector(".spin-label").textContent = GR.T.spinning;
 
     wheel.spin(function (index) {
       document.body.classList.remove("is-spinning");
-      $("spinBtn").querySelector(".spin-label").textContent = "Rad drehen";
+      $("spinBtn").querySelector(".spin-label").textContent = GR.T.spin;
       ui.setSpinEnabled(state.entries.length >= GR.MIN_ENTRIES);
 
       var text = state.entries[index];
@@ -181,6 +182,6 @@
 
   /* ---------- Start ---------- */
   $("year").textContent = new Date().getFullYear();
-  sync();
+  sync(true);
   syncHistory();
 })();

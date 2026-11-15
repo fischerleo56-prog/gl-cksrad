@@ -23,7 +23,7 @@
         var btn = document.createElement("button");
         btn.type = "button";
         btn.className = "remove";
-        btn.setAttribute("aria-label", text + " entfernen");
+        btn.setAttribute("aria-label", GR.T.removeAria.replace("{x}", text));
         btn.textContent = "×";
         btn.addEventListener("click", function () { onRemove(i); });
 
@@ -39,11 +39,11 @@
       if (entries.length < GR.MIN_ENTRIES) {
         note.hidden = false;
         note.className = "note warn";
-        note.textContent = "Mindestens " + GR.MIN_ENTRIES + " Einträge nötig, um zu drehen.";
+        note.textContent = GR.T.minNote.replace("{n}", GR.MIN_ENTRIES);
       } else if (entries.length >= GR.MAX_ENTRIES) {
         note.hidden = false;
         note.className = "note warn";
-        note.textContent = "Maximal " + GR.MAX_ENTRIES + " Einträge möglich.";
+        note.textContent = GR.T.maxNote.replace("{n}", GR.MAX_ENTRIES);
       } else {
         note.hidden = true;
       }
@@ -70,7 +70,7 @@
         var name = document.createElement("span");
         name.textContent = h.text;
         var time = document.createElement("time");
-        time.textContent = new Date(h.time).toLocaleTimeString("de-DE", { hour: "2-digit", minute: "2-digit" });
+        time.textContent = new Date(h.time).toLocaleTimeString(GR.T.locale,{ hour: "2-digit", minute: "2-digit" });
         li.appendChild(name);
         li.appendChild(time);
         ol.appendChild(li);

@@ -1,4 +1,4 @@
-/* ===== Konfiguration: Farben, Vorlagen, Grenzen ===== */
+/* ===== Konfiguration: Farben, Vorlagen, Grenzen (Texte kommen aus i18n.js) ===== */
 (function () {
   var GR = (window.GR = window.GR || {});
 
@@ -11,17 +11,8 @@
     "#5b5fcf", "#a64fc0", "#e04a8f", "#18a89a", "#7ab317"
   ];
 
-  GR.DEFAULT_ENTRIES = ["Pizza", "Burger", "Sushi", "Pasta", "Döner", "Salat"];
-
-  GR.PRESETS = [
-    { name: "Ja / Nein", entries: ["Ja", "Nein"] },
-    { name: "Zahlen 1–10", entries: ["1", "2", "3", "4", "5", "6", "7", "8", "9", "10"] },
-    { name: "Würfel", entries: ["1", "2", "3", "4", "5", "6"] },
-    { name: "Essen", entries: ["Pizza", "Burger", "Sushi", "Pasta", "Döner", "Salat", "Tacos", "Curry"] },
-    { name: "Wahrheit oder Pflicht", entries: ["Wahrheit", "Pflicht"] },
-    { name: "Wer fängt an?", entries: ["Spieler 1", "Spieler 2", "Spieler 3", "Spieler 4"] },
-    { name: "Preise", entries: ["Hauptgewinn", "Gutschein", "Trostpreis", "Nochmal drehen", "Niete", "Überraschung"] }
-  ];
+  GR.DEFAULT_ENTRIES = GR.T.defaults.slice();
+  GR.PRESETS = GR.T.presets;
 
   /* Farbe für Segment i von n; vermeidet gleiche Farbe bei letztem und erstem Segment */
   GR.colorFor = function (i, n) {
