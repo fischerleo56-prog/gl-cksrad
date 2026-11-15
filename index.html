@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Glücksrad online – kostenlos drehen & selbst gestalten</title>
+  <meta name="description" content="Das kostenlose Glücksrad online: Einträge eingeben, Rad drehen, Gewinner ziehen. Perfekt für Entscheidungen, Spiele, Verlosungen und Klassenzimmer. Ohne Anmeldung, am Handy und PC.">
+  <meta name="keywords" content="Glücksrad, Glücksrad online, Glücksrad drehen, Glücksrad kostenlos, Zufallsrad, Entscheidungsrad, Wheel of Fortune, Gewinnspiel Rad">
+  <meta name="robots" content="index, follow, max-image-preview:large">
+  <meta name="theme-color" content="#0b0820">
+  <link rel="canonical" href="https://example.com/">
+  <link rel="icon" href="favicon.svg" type="image/svg+xml">
+  <link rel="manifest" href="manifest.json">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="de_DE">
+  <meta property="og:title" content="Glücksrad online – kostenlos drehen">
+  <meta property="og:description" content="Eigene Einträge, schickes Rad, sofort Ergebnis. Das Glücksrad für Entscheidungen, Spiele und Verlosungen.">
+  <meta property="og:url" content="https://example.com/">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="Glücksrad online – kostenlos drehen">
+  <meta name="twitter:description" content="Eigene Einträge, schickes Rad, sofort Ergebnis.">
+
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/wheel.css">
+  <link rel="stylesheet" href="css/panel.css">
+  <link rel="stylesheet" href="css/modal.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebApplication",
+        "name": "Glücksrad online",
+        "url": "https://example.com/",
+        "applicationCategory": "GameApplication",
+        "operatingSystem": "Alle (Browser)",
+        "inLanguage": "de",
+        "description": "Kostenloses Glücksrad zum Drehen mit eigenen Einträgen. Läuft im Browser auf Handy, Tablet und PC.",
+        "offers": { "@type": "Offer", "price": "0", "priceCurrency": "EUR" }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Wie funktioniert das Glücksrad online?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Trage deine Einträge ein, klicke auf Drehen und das Rad stoppt zufällig bei einem Eintrag. Das Ergebnis wird sofort angezeigt." }
+          },
+          {
+            "@type": "Question",
+            "name": "Ist das Glücksrad wirklich zufällig?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Ja. Der Gewinner wird per Zufallsgenerator des Browsers bestimmt, jeder Eintrag hat dieselbe Chance." }
+          },
+          {
+            "@type": "Question",
+            "name": "Kann ich eigene Einträge speichern?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Ja. Deine Einträge werden automatisch in deinem Browser gespeichert und sind beim nächsten Besuch wieder da." }
+          },
+          {
+            "@type": "Question",
+            "name": "Kostet das Glücksrad etwas?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Nein, das Glücksrad ist kostenlos und braucht weder Anmeldung noch Installation." }
+          },
+          {
+            "@type": "Question",
+            "name": "Funktioniert das Glücksrad auf dem Handy?",
+            "acceptedAnswer": { "@type": "Answer", "text": "Ja, die Seite passt sich automatisch an Smartphone, Tablet und PC an." }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+</head>
+<body>
+  <div class="bg" aria-hidden="true"><span class="blob b1"></span><span class="blob b2"></span><span class="blob b3"></span></div>
+
+  <header class="site-header">
+    <a class="brand" href="./" aria-label="Glücksrad Startseite">
+      <img src="favicon.svg" width="30" height="30" alt="">
+      <span>Glücksrad</span>
+    </a>
+    <nav class="nav" aria-label="Hauptnavigation">
+      <a href="#anleitung">Anleitung</a>
+      <a href="#ideen">Ideen</a>
+      <a href="#faq">FAQ</a>
+    </nav>
+  </header>
+
+  <main>
+    <section class="app" id="app">
+      <div class="app-head">
+        <h1>Glücksrad <span class="grad">online</span></h1>
+        <p class="lead">Einträge eingeben, drehen, Gewinner ziehen. Kostenlos und ohne Anmeldung.</p>
+      </div>
+
+      <div class="stage">
+        <div class="wheel-col">
+          <div class="wheel-wrap" id="wheelWrap">
+            <div class="pointer" aria-hidden="true"></div>
+            <canvas id="wheelCanvas" role="img" aria-label="Glücksrad mit deinen Einträgen"></canvas>
+            <button class="hub" id="hubBtn" type="button" aria-label="Rad drehen">DREHEN</button>
+          </div>
+
+          <button class="spin-btn" id="spinBtn" type="button">
+            <span class="spin-label">Rad drehen</span>
+          </button>
+          <p class="hint">Tipp: Mit der Leertaste drehst du am PC.</p>
+
+          <div class="result-strip" id="resultStrip" aria-live="polite">
+            <span class="result-label">Letztes Ergebnis</span>
+            <strong id="resultText">–</strong>
+          </div>
+        </div>
+
+        <aside class="panel" aria-label="Einstellungen">
+          <section class="card">
+            <div class="card-head">
+              <h2>Einträge <small id="entryCount">0</small></h2>
+              <div class="mini-actions">
+                <button type="button" class="ghost" id="shuffleBtn" title="Reihenfolge mischen">Mischen</button>
+                <button type="button" class="ghost danger" id="clearBtn" title="Alle Einträge löschen">Leeren</button>
+              </div>
+            </div>
+
+            <form class="add-form" id="addForm" autocomplete="off">
+              <label class="sr-only" for="entryInput">Neuer Eintrag</label>
+              <input id="entryInput" type="text" maxlength="40" placeholder="Neuer Eintrag …" enterkeyhint="done">
+              <button type="submit" class="add-btn" aria-label="Eintrag hinzufügen">+</button>
+            </form>
+
+            <ul class="entries" id="entryList"></ul>
+            <p class="note" id="entryNote" hidden></p>
+          </section>
+
+          <section class="card">
+            <h2>Vorlagen</h2>
+            <div class="chips" id="presetChips"></div>
+          </section>
+
+          <section class="card">
+            <div class="card-head">
+              <h2>Verlauf</h2>
+              <button type="button" class="ghost" id="clearHistoryBtn">Löschen</button>
+            </div>
+            <ol class="history" id="historyList"></ol>
+            <p class="note" id="historyEmpty">Noch nichts gedreht.</p>
+          </section>
+
+          <section class="card">
+            <h2>Optionen</h2>
+            <label class="switch">
+              <input type="checkbox" id="soundToggle" checked>
+              <span class="track"><span class="thumb"></span></span>
+              <span class="switch-text">Sound</span>
+            </label>
+          </section>
+        </aside>
+      </div>
+    </section>
+
+    <section class="content" id="anleitung">
+      <h2>So funktioniert das Glücksrad</h2>
+      <ol class="steps">
+        <li><strong>Einträge festlegen.</strong> Tippe Namen, Aufgaben oder Optionen ein oder wähle eine Vorlage.</li>
+        <li><strong>Rad drehen.</strong> Klick auf „Rad drehen“, in die Mitte des Rads oder drücke die Leertaste.</li>
+        <li><strong>Gewinner ansehen.</strong> Das Rad bremst ab und zeigt dir das Ergebnis. Auf Wunsch entfernst du den Gewinner und drehst weiter.</li>
+      </ol>
+      <p>Dein Glücksrad online funktioniert direkt im Browser, braucht keine App und speichert deine Einträge automatisch auf deinem Gerät.</p>
+    </section>
+
+    <section class="content" id="ideen">
+      <h2>Ideen für dein Glücksrad</h2>
+      <div class="idea-grid">
+        <article><h3>Entscheidungen treffen</h3><p>Was essen wir heute? Welchen Film schauen wir? Lass das Zufallsrad entscheiden.</p></article>
+        <article><h3>Verlosung &amp; Gewinnspiel</h3><p>Ziehe fair einen Gewinner aus allen Teilnehmern, live und für alle sichtbar.</p></article>
+        <article><h3>Schule &amp; Unterricht</h3><p>Schüler aufrufen, Gruppen bilden oder Themen verteilen, spielerisch und gerecht.</p></article>
+        <article><h3>Party &amp; Spiele</h3><p>Wahrheit oder Pflicht, Trinkspiele ohne Alkohol, Spielreihenfolge und mehr.</p></article>
+      </div>
+    </section>
+
+    <section class="content" id="faq">
+      <h2>Häufige Fragen zum Glücksrad</h2>
+      <details><summary>Wie funktioniert das Glücksrad online?</summary><p>Trage deine Einträge ein, klicke auf Drehen und das Rad stoppt zufällig bei einem Eintrag. Das Ergebnis wird sofort angezeigt.</p></details>
+      <details><summary>Ist das Glücksrad wirklich zufällig?</summary><p>Ja. Der Gewinner wird per Zufallsgenerator des Browsers bestimmt, jeder Eintrag hat dieselbe Chance.</p></details>
+      <details><summary>Kann ich eigene Einträge speichern?</summary><p>Ja. Deine Einträge werden automatisch in deinem Browser gespeichert und sind beim nächsten Besuch wieder da.</p></details>
+      <details><summary>Kostet das Glücksrad etwas?</summary><p>Nein, das Glücksrad ist kostenlos und braucht weder Anmeldung noch Installation.</p></details>
+      <details><summary>Funktioniert das Glücksrad auf dem Handy?</summary><p>Ja, die Seite passt sich automatisch an Smartphone, Tablet und PC an.</p></details>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <p>© <span id="year">2026</span> Glücksrad online · Kostenlos drehen, fair entscheiden.</p>
+  </footer>
+
+  <dialog class="modal" id="resultModal" aria-labelledby="modalWinner">
+    <div class="modal-box">
+      <p class="modal-kicker">Gewinner</p>
+      <h2 id="modalWinner">–</h2>
+      <div class="modal-actions">
+        <button type="button" class="btn primary" id="againBtn">Nochmal drehen</button>
+        <button type="button" class="btn" id="removeWinnerBtn">Gewinner entfernen</button>
+        <button type="button" class="btn ghost" id="closeModalBtn">Schließen</button>
+      </div>
+    </div>
+  </dialog>
+
+  <canvas id="confetti" aria-hidden="true"></canvas>
+
+  <script src="js/config.js"></script>
+  <script src="js/storage.js"></script>
+  <script src="js/sound.js"></script>
+  <script src="js/confetti.js"></script>
+  <script src="js/wheel.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>

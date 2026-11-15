@@ -1,0 +1,13 @@
+{
+  "name": "Glücksrad online",
+  "short_name": "Glücksrad",
+  "description": "Kostenloses Glücksrad zum Drehen mit eigenen Einträgen.",
+  "lang": "de",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#0b0820",
+  "theme_color": "#0b0820",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
